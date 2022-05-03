@@ -77,9 +77,99 @@
 		return 0;
 	}
 	
+	//Metodi per la gestione delle note
+	function getNote($noteID){ //Prende una singola nota dato il suo ID
+		$conn = connect(); //Connessione al DB
+		$noteID = mysqli_real_escape_string($conn, $noteID);
+		
+		$query="SELECT note.ID,note.titolo,note.nota,note.dataSalvataggio FROM note,utenti WHERE note.ID = '$noteID' AND note.ID_utente = utenti.ID;";
+		
+		$ris=mysqli_query($conn,$query);
+		mysqli_close($conn);
+
+		if(mysqli_num_rows($ris)==0){
+			$nota=-1;//nota non trovata
+		}
+		else{
+			$note = array();
+			while($riga=mysqli_fetch_array($ris,MYSQLI_ASSOC)){
+				$note[] = $riga;
+			}
+			return $note;
+		}
+	}
+
+	function getNotes($uid){ //prende tutte le note dato l'id utente
+		$conn = connect(); //Connessione al DB
+		$uid = mysqli_real_escape_string($conn, $uid);
+		
+		$query="SELECT note.ID,note.titolo,note.nota,note.dataSalvataggio FROM note,utenti WHERE note.ID_utente = '$uid' AND note.ID_utente = utenti.ID;";
+		
+		$ris=mysqli_query($conn,$query);
+		mysqli_close($conn);
+
+		if(mysqli_num_rows($ris)==0){
+			$nota=-1;//nota non trovata
+		}
+		else{
+			$notes = array();
+			while($riga=mysqli_fetch_array($ris,MYSQLI_ASSOC)){
+				$notes[] = $riga;
+			}
+			return $notes;
+		}
+	}
+	function addNote($uid,$titolo,$nota){ //aggiunge una nuova nota
+		$conn = connect(); //Connessione al DB
+		$uid = mysqli_real_escape_string($conn, $uid);
+		$titolo = mysqli_real_escape_string($conn, $titolo);
+		$nota = mysqli_real_escape_string($conn, $nota);
+
+		$noteID = random_str(16);
+		$time = date ('Y-m-d H:i:s', time());
+
+		$query="INSERT INTO note (id, ID_utente, titolo, nota,dataSalvataggio) VALUES ('$noteID','$uid','$titolo','$nota','$time');";
+
+		$ris=mysqli_query($conn,$query);
+
+		mysqli_close($conn);
+		return 0;
+	}
+
+	function deleteNote($noteID){ //Elimina una nota
+		$conn = connect(); //Connessione al DB
+		$noteID = mysqli_real_escape_string($conn, $noteID);
+		
+		$query="DELETE FROM note WHERE note.ID='$noteID';";
+		
+		$ris=mysqli_query($conn,$query);
+		mysqli_close($conn);
+		return 0;
+	}
+
+	function editNote($noteID,$titolo,$nota){  //modifica una nota
+		$conn = connect(); //Connessione al DB
+		$noteID = mysqli_real_escape_string($conn, $noteID);
+		$titolo = mysqli_real_escape_string($conn, $titolo);
+		$nota = mysqli_real_escape_string($conn, $nota);
+
+		$time = date ('Y-m-d H:i:s', time());
+
+		$query="UPDATE Note SET titolo='$titolo', nota='$nota',dataSalvataggio='$time' WHERE note.ID = '$noteID';";
+
+		$ris=mysqli_query($conn,$query);
+
+		mysqli_close($conn);
+		return 0;
+	}
+
 	//echo random_str(16);
 	//register("utente","utente","utente@prova.it");
 	//echo(checkLogin("utente","utente"));
 	//echo(checkLogin("admin","admin"));
-	
+
+	//addNote("3dpoANLgeksFvufR","Nota di prova","prova di scrittura, nota di prova, demo, test, prova");
+	//print_r(getNotes("3dpoANLgeksFvufR"));
+	//deleteNote("SiQ0IOSko3m85sWy");
+	//editNote("2JGTox8GuL7RoHog","Nota Aggiotnata","Nota aggiornata");
 ?>
