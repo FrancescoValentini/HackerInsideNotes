@@ -1,0 +1,17 @@
+CREATE TABLE Utenti (
+	ID VARCHAR(16) PRIMARY KEY NOT NULL,
+	username VARCHAR(30),
+	password VARCHAR(65),
+	email VARCHAR(50)
+)ENGINE = INNODB;
+
+CREATE TABLE Note (
+	ID VARCHAR(16) PRIMARY KEY NOT NULL,
+	ID_utente VARCHAR(16),
+	titolo VARCHAR(60),
+	nota TEXT,
+	categoria VARCHAR(30),
+	dataSalvataggio DATE,
+	CONSTRAINT FK_IDutente FOREIGN KEY (ID_utente) REFERENCES Utenti(ID)
+)ENGINE = INNODB;
+
