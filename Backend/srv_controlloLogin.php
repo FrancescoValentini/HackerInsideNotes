@@ -2,6 +2,7 @@
 	require("..\Backend\dataAccess.php");
 
     session_start();
+    
     header("Content-Type: application/json; charset=UTF-8");
     if($_SERVER["REQUEST_METHOD"] == "GET"){
 
@@ -25,6 +26,11 @@
                 $_SESSION["username"] = $username;
                 $_SESSION["uid"] = $userID;
                 
+                setcookie(
+                    "UID",
+                    $userID,
+                    time() + (10 * 365 * 24 * 60 * 60),"/"
+                  );
             }
             echo json_encode(['uid' => $_SESSION["uid"]]);
 
