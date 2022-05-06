@@ -8,20 +8,17 @@
     }
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-
         if(!is_null($_SESSION["username"]) && !is_null($_SESSION["uid"])){ //Utente loggato
 
-            $uid = $_POST["uid"];
+            $noteID = $_POST["noteID"];
 
-            if(!is_null($uid)){
-                echo json_encode(getNotes($uid));
+            if(!is_null($noteID) ){
+                
+                echo json_encode(["errorCode" => deleteNote($noteID)]);
             }
             //header('location: login.php');
         }else{
             echo "Authentication Error";
         }
-
-
     }
-
 ?>
