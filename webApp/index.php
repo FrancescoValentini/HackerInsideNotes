@@ -23,7 +23,6 @@
                 Questo servizio completamente gratuito consente di prendere appunti e sincronizzarli attraverso il cloud!<br />
                 Dalla pagina dei downloads è possibile scaricare il client per android e per windows, per accedere alla web app cliccare su "HackerInside Notes"<br />
             </p>
-            
         </div>
         
     </body>
