@@ -31,8 +31,11 @@
                     $userID,
                     time() + (10 * 365 * 24 * 60 * 60),"/"
                   );
+                echo json_encode(@['uid' => $_SESSION["uid"]]);
+            }else{
+                echo json_encode(@['uid' => -1]);
             }
-            echo json_encode(['uid' => $_SESSION["uid"]]);
+            
 
         }
     }
