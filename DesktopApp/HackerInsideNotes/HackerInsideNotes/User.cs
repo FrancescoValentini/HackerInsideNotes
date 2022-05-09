@@ -24,7 +24,8 @@ namespace HackerInsideNotes {
         }
 
         public string login(string username, string password) {
-            var request = (HttpWebRequest)WebRequest.Create("http://localhost/hackerinsidenotes/Backend/srv_controlloLogin.php");
+
+            var request = (HttpWebRequest)WebRequest.Create(Properties.Settings.Default.serverUrl + "srv_controlloLogin.php");
 
             request.CookieContainer = MainWindow.utenteLoggato.cookieContainer;
 
@@ -54,7 +55,7 @@ namespace HackerInsideNotes {
         }
 
         public List<Nota> getNotes() {
-            var request = (HttpWebRequest)WebRequest.Create("http://localhost/hackerinsidenotes/Backend/srv_getNotes.php");
+            var request = (HttpWebRequest)WebRequest.Create(Properties.Settings.Default.serverUrl + "srv_getNotes.php");
 
             request.CookieContainer = MainWindow.utenteLoggato.cookieContainer;
 
@@ -78,7 +79,7 @@ namespace HackerInsideNotes {
         }
 
         public Nota getNote(string noteID) {
-            var request = (HttpWebRequest)WebRequest.Create("http://localhost/hackerinsidenotes/Backend/srv_getNotes.php");
+            var request = (HttpWebRequest)WebRequest.Create(Properties.Settings.Default.serverUrl + "srv_getNotes.php");
 
             request.CookieContainer = MainWindow.utenteLoggato.cookieContainer;
 
@@ -100,7 +101,7 @@ namespace HackerInsideNotes {
             return JsonSerializer.Deserialize<Nota>(responseString);
         }
         public String addNote(string title,string nota) {
-            var request = (HttpWebRequest)WebRequest.Create("http://localhost/hackerinsidenotes/Backend/srv_addNote.php");
+            var request = (HttpWebRequest)WebRequest.Create(Properties.Settings.Default.serverUrl + "srv_addNote.php");
 
             request.CookieContainer = MainWindow.utenteLoggato.cookieContainer;
 
@@ -127,7 +128,7 @@ namespace HackerInsideNotes {
             return (string)obj["errorcode"];
         }
         public String deleteNote(string noteID) {
-            var request = (HttpWebRequest)WebRequest.Create("http://localhost/hackerinsidenotes/Backend/srv_deleteNote.php");
+            var request = (HttpWebRequest)WebRequest.Create(Properties.Settings.Default.serverUrl + "srv_deleteNote.php");
 
             request.CookieContainer = MainWindow.utenteLoggato.cookieContainer;
 
@@ -154,7 +155,7 @@ namespace HackerInsideNotes {
         }
 
         public String editNote(string noteID, string title, string nota) {
-            var request = (HttpWebRequest)WebRequest.Create("http://localhost/hackerinsidenotes/Backend/srv_editNote.php");
+            var request = (HttpWebRequest)WebRequest.Create(Properties.Settings.Default.serverUrl + "srv_editNote.php");
 
             request.CookieContainer = MainWindow.utenteLoggato.cookieContainer;
 

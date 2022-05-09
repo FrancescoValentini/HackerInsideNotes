@@ -24,7 +24,7 @@ namespace HackerInsideNotes {
         public loginScreen() {
             InitializeComponent();
             txtbServer.Text = Properties.Settings.Default.serverUrl;
-            txtbUsername.Text = Properties.Settings.Default.serverUrl;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
@@ -33,42 +33,13 @@ namespace HackerInsideNotes {
 
             if(MainWindow.utenteLoggato.UID != "-1") {
                 MessageBox.Show("LOGIN OK");
+                Properties.Settings.Default.serverUrl = txtbServer.Text;
+                Properties.Settings.Default.Save();
                 new MainWindow().Show();
                 Close();
             } else {
                 MessageBox.Show("Wrong username or password!");
             }
-
-            //MainWindow.utenteLoggato.login("admin", "admin");
-            /* var request = (HttpWebRequest)WebRequest.Create("http://localhost/hackerinsidenotes/Backend/srv_controlloLogin.php");
-
-             request.CookieContainer = MainWindow.utenteLoggato.cookieContainer;
-
-             var postData = "username=" + Uri.EscapeDataString(txtbUsername.Text);
-             postData += "&pwd=" + Uri.EscapeDataString(txtbPassword.Password.ToString().Trim());
-             var data = Encoding.ASCII.GetBytes(postData);
-
-             request.Method = "POST";
-             request.ContentType = "application/x-www-form-urlencoded";
-             request.ContentLength = data.Length;
-
-             using (var stream = request.GetRequestStream()) {
-                 stream.Write(data, 0, data.Length);
-             }
-
-             var response = (HttpWebResponse)request.GetResponse();
-
-             var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-
-             txtbServer.Text = responseString;// txtbPassword.Password.ToString().Trim();
-
-             JObject obj = JObject.Parse(responseString);
-             MainWindow.utenteLoggato.UID = (string)obj["uid"];
-             foreach (var cookie in request.CookieContainer.GetCookies(new Uri("http://localhost/hackerinsidenotes/Backend/srv_controlloLogin.php"))) {
-                 //Console.WriteLine(cookie.ToString()); // test=testValue
-                 MessageBox.Show(cookie.ToString());
-             }*/
 
         }
 

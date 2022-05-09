@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HackerInsideNotes"
         mc:Ignorable="d"
-        Title="HackerInside Notes - Login" Height="438" Width="359" Background="#FF252020" Foreground="White">
+        Title="HackerInside Notes - Login" Height="438" Width="443" Background="#FF252020" Foreground="White">
     <Grid>
         <Label Content="Server:" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
         <Label Content="Username:" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
         <Label Content="Password:" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
-        <TextBox x:Name="txtbServer" HorizontalAlignment="Left" Margin="67,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275" FontSize="14" Foreground="White" Background="#FF252020"/>
-        <TextBox x:Name="txtbUsername" HorizontalAlignment="Left" Margin="90,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="252" FontSize="14" Foreground="White" Background="#FF252020"/>
-        <PasswordBox x:Name="txtbPassword" HorizontalAlignment="Left" Margin="90,223,0,0" VerticalAlignment="Top" Width="252" Background="#FF252020" Foreground="White" FontSize="14"/>
+        <TextBox x:Name="txtbServer" Margin="67,155,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Foreground="White" Background="#FF252020"/>
+        <TextBox x:Name="txtbUsername" Margin="90,188,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Foreground="White" Background="#FF252020"/>
+        <PasswordBox x:Name="txtbPassword" Margin="90,223,0,0" VerticalAlignment="Top" Background="#FF252020" Foreground="White" FontSize="14" HorizontalAlignment="Left" Width="343"/>
         <Button Content="LOGIN" HorizontalAlignment="Center" Margin="0,267,0,0" VerticalAlignment="Top" Height="37" Width="113" Background="#FF252020" Foreground="White" FontSize="18" Click="Button_Click"/>
 
     </Grid>
