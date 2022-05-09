@@ -1,0 +1,19 @@
+﻿<Window x:Class="HackerInsideNotes.loginScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HackerInsideNotes"
+        mc:Ignorable="d"
+        Title="HackerInside Notes - Login" Height="438" Width="359" Background="#FF252020" Foreground="White">
+    <Grid>
+        <Label Content="Server:" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <Label Content="Username:" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
+        <TextBox x:Name="txtbServer" HorizontalAlignment="Left" Margin="67,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="275" FontSize="14" Foreground="White" Background="#FF252020"/>
+        <TextBox x:Name="txtbUsername" HorizontalAlignment="Left" Margin="90,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="252" FontSize="14" Foreground="White" Background="#FF252020"/>
+        <PasswordBox x:Name="txtbPassword" HorizontalAlignment="Left" Margin="90,223,0,0" VerticalAlignment="Top" Width="252" Background="#FF252020" Foreground="White" FontSize="14"/>
+        <Button Content="LOGIN" HorizontalAlignment="Center" Margin="0,267,0,0" VerticalAlignment="Top" Height="37" Width="113" Background="#FF252020" Foreground="White" FontSize="18" Click="Button_Click"/>
+
+    </Grid>
+</Window>

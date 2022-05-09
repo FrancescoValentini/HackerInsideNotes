@@ -1,0 +1,31 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HackerInsideNotes"
+        xmlns:System="clr-namespace:System;assembly=System.Runtime" x:Class="HackerInsideNotes.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="521" Width="938" Background="#FF252020" Foreground="White" Closed="Window_Closed">
+    <Grid>
+        <ListBox DisplayMemberPath="titolo" x:Name="listboxNote" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FF252020" HorizontalAlignment="Left" Width="198" Foreground="White" Margin="0,0,0,41" SelectionChanged="listboxNote_SelectionChanged">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Elimina" Click="deleteNote_Click"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+            <local:Nota/>
+        </ListBox>
+
+        <TextBox x:Name="txtbTitolo" Margin="203,10,0,0" TextWrapping="Wrap" Text="TextBox" Height="30" VerticalAlignment="Top" Foreground="White" Background="#FF252020" FontSize="18"/>
+        <RichTextBox x:Name="txtbNota" Margin="203,45,0,0" Foreground="White" Background="#FF252020">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Button x:Name="btnAddNote" Content="+" HorizontalAlignment="Left" Margin="0,0,0,8" Width="28" FontSize="18" Height="28" VerticalAlignment="Bottom" Click="btnAddNote_Click"/>
+        <Button x:Name="btnSave" Content="SAVE" HorizontalAlignment="Left" Margin="33,0,0,8" Width="51" FontSize="18" Height="28" VerticalAlignment="Bottom" Click="btnSave_Click"/>
+    </Grid>
+</Window>

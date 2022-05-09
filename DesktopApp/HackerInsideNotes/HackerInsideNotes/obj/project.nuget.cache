@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "OYnXL36J8RkkQIvk72trOczjGh6X5QV6XBzCU9BvXws/y/fzxZ2S+uMD8Cw2JwXjoypebexODRFOh8DgEqKRFA==",
+  "success": true,
+  "projectFilePath": "D:\\xampp\\htdocs\\HackerInsideNotes\\DesktopApp\\HackerInsideNotes\\HackerInsideNotes\\HackerInsideNotes.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
