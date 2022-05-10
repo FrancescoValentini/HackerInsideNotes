@@ -12,7 +12,7 @@
         <!-- Barra di navigazione-->
         <ul class="navBar">
             <li><a class="active" href="index.html">HOME</a></li>
-            <li><a href="info.html">HackerInside Notes</a></li>
+            <li><a href="notes.php">HackerInside Notes</a></li>
             <li><a href="info.html">Contatti</a></li>
         </ul>
         <!-- Contenuto del sito -->

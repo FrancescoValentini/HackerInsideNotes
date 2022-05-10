@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:HackerInsideNotes"
         xmlns:System="clr-namespace:System;assembly=System.Runtime" x:Class="HackerInsideNotes.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="521" Width="938" Background="#FF252020" Foreground="White" Closed="Window_Closed">
+        Title="HackerInside Notes" Height="521" Width="938" Background="#FF252020" Foreground="White" Closed="Window_Closed">
     <Grid>
-        <ListBox DisplayMemberPath="titolo" x:Name="listboxNote" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FF252020" HorizontalAlignment="Left" Width="198" Foreground="White" Margin="0,0,0,41" SelectionChanged="listboxNote_SelectionChanged">
+        <ListBox DisplayMemberPath="titolo" x:Name="listboxNote" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FF252020" HorizontalAlignment="Left" Width="198" Foreground="White" Margin="0,10,0,41" SelectionChanged="listboxNote_SelectionChanged">
             <ListBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Elimina" Click="deleteNote_Click"/>

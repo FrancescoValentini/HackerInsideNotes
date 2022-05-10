@@ -10,9 +10,9 @@
         <Label Content="Server:" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
         <Label Content="Username:" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
         <Label Content="Password:" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
-        <TextBox x:Name="txtbServer" Margin="67,155,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Foreground="White" Background="#FF252020"/>
+        <TextBox x:Name="txtbServer" Margin="90,155,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Foreground="White" Background="#FF252020"/>
         <TextBox x:Name="txtbUsername" Margin="90,188,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Foreground="White" Background="#FF252020"/>
-        <PasswordBox x:Name="txtbPassword" Margin="90,223,0,0" VerticalAlignment="Top" Background="#FF252020" Foreground="White" FontSize="14" HorizontalAlignment="Left" Width="343"/>
+        <PasswordBox x:Name="txtbPassword" Margin="90,223,10,0" VerticalAlignment="Top" Background="#FF252020" Foreground="White" FontSize="14"/>
         <Button Content="LOGIN" HorizontalAlignment="Center" Margin="0,267,0,0" VerticalAlignment="Top" Height="37" Width="113" Background="#FF252020" Foreground="White" FontSize="18" Click="Button_Click"/>
 
     </Grid>
