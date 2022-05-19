@@ -1,19 +1,22 @@
 package it.hackerinside.hackerinsidenotes;
 
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-public class User {
+public class User implements Serializable {
     public String UID;
     public CookieManager cookieContainer;
 
@@ -27,6 +30,7 @@ public class User {
 
     }
     public static String httpPost(String urlstr,String params) throws Exception {
+
         byte[] postData = params.getBytes( StandardCharsets.UTF_8 );
         int postDataLength = postData.length;
         URL url = new URL( urlstr );
@@ -50,18 +54,48 @@ public class User {
         }
 
         reader.close();
-        return null;
+        return ris;
     }
 
     public String login(String username, String password) throws Exception {
-        JSONObject jsonObj = new JSONObject(httpPost("http://192.168.1.21/hackerinsidenotes/Backend/srv_controlloLogin.php",
-                "username=" + username + "&pwd=" + password));
+        final String[] ris = {""};
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    ris[0] = httpPost("http://192.168.1.21/hackerinsidenotes/Backend/srv_controlloLogin.php",
+                            "username=" + username + "&pwd=" + password);
+                }catch(Exception e){
+
+                }
+                return;
+            }
+        });
+        t.start();
+        t.join();
+
+        JSONObject jsonObj = new JSONObject(ris[0]);
         return jsonObj.getString("uid");
     }
     public String getNotes() throws Exception {
-        /*JSONObject jsonObj = new JSONObject();
-        return jsonObj.getString("uid");*/
-        return httpPost("http://192.168.1.21/hackerinsidenotes/Backend/srv_getNotes.php",
-                "uid=" + this.UID);
+        final String[] ris = {""};
+        final String uid = this.UID;
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    ris[0] = httpPost("http://192.168.1.21/hackerinsidenotes/Backend/srv_getNotes.php",
+                            "uid=" + uid);
+
+                }catch(Exception e){
+
+                }
+                return;
+            }
+        });
+        t.start();
+        t.join();
+
+        return ris[0];
     }
 }
