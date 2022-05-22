@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class Notepad extends AppCompatActivity {
     public static User utenteLoggato = new User();
-    
+
     Spinner spinnerTitoloNote = null;
     EditText txtbNotes;
     EditText txtbTitolo;
@@ -42,6 +42,7 @@ public class Notepad extends AppCompatActivity {
         Intent intent = getIntent();
 
         try {
+            utenteLoggato.server = intent.getStringExtra("server");
             utenteLoggato.UID = utenteLoggato.login(intent.getStringExtra("username"),intent.getStringExtra("password"));
 
         } catch (Exception e) {

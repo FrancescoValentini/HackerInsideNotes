@@ -22,14 +22,16 @@ import java.nio.charset.StandardCharsets;
 public class User implements Serializable {
     public String UID;
     public CookieManager cookieContainer;
+    public String server;
 
     public User() {
         cookieContainer = new CookieManager( null, CookiePolicy.ACCEPT_ALL );
     }
 
-    public User(String UID, CookieManager cookieContainer) {
+    public User(String UID, CookieManager cookieContainer,String server) {
         this.UID = UID;
         this.cookieContainer = cookieContainer;
+        this.server = server;
     }
 
 
@@ -67,7 +69,7 @@ public class User implements Serializable {
             @Override
             public void run() {
                 try{
-                    ris[0] = httpPost("http://192.168.1.21/hackerinsidenotes/Backend/srv_controlloLogin.php",
+                    ris[0] = httpPost(server + "srv_controlloLogin.php",
                             "username=" + username + "&pwd=" + password);
                 }catch(Exception e){
 
@@ -88,7 +90,7 @@ public class User implements Serializable {
             @Override
             public void run() {
                 try{
-                    ris[0] = httpPost("http://192.168.1.21/hackerinsidenotes/Backend/srv_getNotes.php",
+                    ris[0] = httpPost(server + "srv_getNotes.php",
                             "uid=" + uid);
 
                 }catch(Exception e){
@@ -109,7 +111,7 @@ public class User implements Serializable {
             @Override
             public void run() {
                 try{
-                    ris[0] = httpPost("http://192.168.1.21/hackerinsidenotes/Backend/srv_getNote.php",
+                    ris[0] = httpPost(server + "srv_getNote.php",
                             "noteID=" + noteID);
                 }catch(Exception e){
 
@@ -134,7 +136,7 @@ public class User implements Serializable {
             @Override
             public void run() {
                 try{
-                    ris[0] = httpPost("http://192.168.1.21/hackerinsidenotes/Backend/srv_deleteNote.php",
+                    ris[0] = httpPost(server + "srv_deleteNote.php",
                             "noteID=" + noteID);
                 }catch(Exception e){
 
@@ -154,7 +156,7 @@ public class User implements Serializable {
             @Override
             public void run() {
                 try{
-                    ris[0] = httpPost("http://192.168.1.21/hackerinsidenotes/Backend/srv_addNote.php",
+                    ris[0] = httpPost(server + "srv_addNote.php",
                             "titolo=" +title + "&nota=" + nota);
                 }catch(Exception e){
 
@@ -175,7 +177,7 @@ public class User implements Serializable {
             @Override
             public void run() {
                 try{
-                    ris[0] = httpPost("http://192.168.1.21/hackerinsidenotes/Backend/srv_editNote.php",
+                    ris[0] = httpPost(server + "srv_editNote.php",
                             "noteID=" + noteID
                                     + "&titolo=" +title + "&nota=" + nota);
                 }catch(Exception e){
