@@ -162,8 +162,31 @@
 		mysqli_close($conn);
 		return 0;
 	}
+	function globalCountNotes(){  //modifica una nota
+		$conn = connect(); //Connessione al DB
 
-	//echo random_str(16);
+		$query="SELECT COUNT(ID) AS NumeroNote FROM Note;";
+
+		$ris=mysqli_query($conn,$query);
+		$row = mysqli_fetch_assoc($ris);;
+		return $row['NumeroNote'];
+		mysqli_close($conn);
+		return 0;
+	}
+	function globalCounUsers(){  //modifica una nota
+		$conn = connect(); //Connessione al DB
+
+		$query="SELECT COUNT(ID) AS NumeroUtenti FROM Utenti;";
+
+		$ris=mysqli_query($conn,$query);
+		$row = mysqli_fetch_assoc($ris);;
+		return $row['NumeroUtenti'];
+		mysqli_close($conn);
+		return 0;
+	}
+
+
+	//echo globalCounUsers();
 	//register("utente","utente","utente@prova.it");
 	//echo(checkLogin("utente","utente"));
 	//echo(checkLogin("admin","admin"));
