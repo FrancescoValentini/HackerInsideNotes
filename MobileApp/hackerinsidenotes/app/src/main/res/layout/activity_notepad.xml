@@ -7,7 +7,7 @@
     tools:context=".Notepad">
 
     <Spinner
-        android:id="@+id/cmbTitoloNote"
+        android:id="@+id/spinnerTitoloNote"
         android:layout_width="376dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
@@ -17,16 +17,17 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/txtbNotes"
         android:layout_width="389dp"
         android:layout_height="500dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/txtbTitolo"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
@@ -36,11 +37,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="#ED0353"
+        android:onClick="btn_deleteNote"
         android:text="ELIMINA"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cmbTitoloNote" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTitoloNote" />
 
     <Button
         android:id="@+id/button2"
@@ -51,7 +53,7 @@
         android:backgroundTint="#4CAF50"
         android:text="SALVA"
         app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/cmbTitoloNote" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTitoloNote" />
 
     <Button
         android:id="@+id/button3"
@@ -60,7 +62,18 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#4CAF50"
+        android:onClick="btn_addNote"
         android:text="NUOVA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cmbTitoloNote" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerTitoloNote" />
+
+    <EditText
+        android:id="@+id/txtbTitolo"
+        android:layout_width="391dp"
+        android:layout_height="51dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

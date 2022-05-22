@@ -9,14 +9,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.json.JSONObject;
+
 import java.net.CookieHandler;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
+import java.net.HttpCookie;
+import java.net.URI;
 
 public class MainActivity extends AppCompatActivity {
     EditText txtbUsername,txtbServer;
     EditText txtbPassword;
     Button btnLogin;
    public static User utenteLoggato;
-    public static final String ogg = "com.example.myfirstapp.MESSAGE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,37 +31,26 @@ public class MainActivity extends AppCompatActivity {
         txtbServer = findViewById(R.id.txtbServerURL);
         btnLogin = findViewById(R.id.btnLogin);
         utenteLoggato = new User();
+
         CookieHandler.setDefault(utenteLoggato.cookieContainer);
-
-        /*btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try{
-                    utenteLoggato.UID = utenteLoggato.login("admin","admin");
-                    if(utenteLoggato.UID != "-1"){
-                        Intent intent = new Intent(this, Notepad.class);
-
-                        intent.putExtra("UTENTELOGGATO", utenteLoggato);
-                        startActivity(intent);
-                    }
-                }catch(Exception e){
-
-                }
-
-            }
-        });*/
 
     }
 
     public void btnloginClick(View v){
         try{
             utenteLoggato.UID = utenteLoggato.login("admin","admin");
+
             if(utenteLoggato.UID != "-1"){
                 Log.d("uid",utenteLoggato.UID);
-                Intent intent = new Intent(MainActivity.this, it.hackerinside.hackerinsidenotes.Notepad.class);
+               Intent intent = new Intent(MainActivity.this, it.hackerinside.hackerinsidenotes.Notepad.class);
 
-                intent.putExtra("UTENTELOGGATO", utenteLoggato);
-                startActivity(intent);
+
+                intent.putExtra("username","admin");
+                intent.putExtra("password","admin");
+
+
+
+               startActivity(intent);
            }
         }catch(Exception e){
 

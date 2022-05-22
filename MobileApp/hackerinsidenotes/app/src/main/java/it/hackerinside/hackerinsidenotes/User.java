@@ -1,8 +1,11 @@
 package it.hackerinside.hackerinsidenotes;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,8 +30,9 @@ public class User implements Serializable {
     public User(String UID, CookieManager cookieContainer) {
         this.UID = UID;
         this.cookieContainer = cookieContainer;
-
     }
+
+
     public static String httpPost(String urlstr,String params) throws Exception {
 
         byte[] postData = params.getBytes( StandardCharsets.UTF_8 );
@@ -98,4 +102,93 @@ public class User implements Serializable {
 
         return ris[0];
     }
+
+    public Nota getNote(String noteID) throws Exception {
+        final String[] ris = {""};
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    ris[0] = httpPost("http://192.168.1.21/hackerinsidenotes/Backend/srv_getNote.php",
+                            "noteID=" + noteID);
+                }catch(Exception e){
+
+                }
+                return;
+            }
+        });
+        t.start();
+        t.join();
+        JSONArray ja = new JSONArray(ris[0]);
+        JSONObject jsonObj = ja.getJSONObject(0);
+        return new Nota(
+                jsonObj.getString("ID"),
+                jsonObj.getString("titolo"),
+                jsonObj.getString("nota"),
+                jsonObj.getString("dataSalvataggio"));
+    }
+
+    public int deleteNote(String noteID) throws Exception {
+        final String[] ris = {""};
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    ris[0] = httpPost("http://192.168.1.21/hackerinsidenotes/Backend/srv_deleteNote.php",
+                            "noteID=" + noteID);
+                }catch(Exception e){
+
+                }
+                return;
+            }
+        });
+        t.start();
+        t.join();
+        JSONObject jsonObj = new JSONObject(ris[0]);
+        return
+                jsonObj.getInt("errorCode");
+    }
+    public int addNote(String title,String nota) throws Exception {
+        final String[] ris = {""};
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    ris[0] = httpPost("http://192.168.1.21/hackerinsidenotes/Backend/srv_addNote.php",
+                            "titolo=" +title + "&nota=" + nota);
+                }catch(Exception e){
+
+                }
+                return;
+            }
+        });
+        t.start();
+        t.join();
+        JSONObject jsonObj = new JSONObject(ris[0]);
+        return
+                jsonObj.getInt("errorCode");
+    }
+
+    public int saveNote(String noteID,String title,String nota) throws Exception {
+        final String[] ris = {""};
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    ris[0] = httpPost("http://192.168.1.21/hackerinsidenotes/Backend/srv_editNote.php",
+                            "noteID=" + noteID
+                                    + "&titolo=" +title + "&nota=" + nota);
+                }catch(Exception e){
+
+                }
+                return;
+            }
+        });
+        t.start();
+        t.join();
+        JSONObject jsonObj = new JSONObject(ris[0]);
+        return
+                jsonObj.getInt("errorCode");
+    }
+
 }
