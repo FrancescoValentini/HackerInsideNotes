@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HackerInsideNotes"
         mc:Ignorable="d"
-        Title="HackerInside Notes - Login" Height="438" Width="443" Background="#FF252020" Foreground="White">
+        Title="HackerInside Notes - Login" Height="438" Width="666" Background="#FF252020" Foreground="White">
     <Grid>
         <Label Content="Server:" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>
         <Label Content="Username:" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14"/>

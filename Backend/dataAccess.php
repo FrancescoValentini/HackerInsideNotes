@@ -30,11 +30,11 @@
 		$ris=mysqli_query($conn,$query);
 		
 		if(mysqli_num_rows($ris) == 0 ){
-			echo "non esiste";
+			//echo "non esiste";
 			return false; //utente non trovato
 		}
 		else{
-			echo "esiste";
+			//echo "esiste";
 			return true; //utente trovato
 		}
 		mysqli_close($conn);

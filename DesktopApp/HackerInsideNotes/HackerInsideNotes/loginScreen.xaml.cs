@@ -23,17 +23,18 @@ namespace HackerInsideNotes {
     public partial class loginScreen : Window {
         public loginScreen() {
             InitializeComponent();
+            
             txtbServer.Text = Properties.Settings.Default.serverUrl;
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
-
+            Properties.Settings.Default.serverUrl = txtbServer.Text;
+            Properties.Settings.Default.Save();
             MainWindow.utenteLoggato.login(txtbUsername.Text, txtbPassword.Password.ToString());
 
             if(MainWindow.utenteLoggato.UID != "-1") {
-                Properties.Settings.Default.serverUrl = txtbServer.Text;
-                Properties.Settings.Default.Save();
+
                 new MainWindow().Show();
                 Close();
             } else {
