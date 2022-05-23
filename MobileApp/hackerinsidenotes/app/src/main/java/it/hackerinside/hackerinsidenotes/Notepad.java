@@ -119,6 +119,8 @@ public class Notepad extends AppCompatActivity {
                 txtbTitolo.getText().toString(),
                 txtbNotes.getText().toString()
         );
+
+
         refreshNotes();
 
     }
